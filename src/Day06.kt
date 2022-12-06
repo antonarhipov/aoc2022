@@ -1,12 +1,12 @@
 fun main() {
     fun CharSequence.allUnique() = toSet().count() == length
 
-    fun solve(input: String, windowSize: Int) = input.windowedSequence(windowSize, partialWindows = true) {
+    fun solve(input: String, windowSize: Int) = input.windowedSequence(windowSize) {
         it.allUnique()
     }.indexOf(true) + windowSize
 
     fun solveNaively(input: String, windowSize: Int): Int {
-        val windowed = input.windowed(windowSize, partialWindows = true)
+        val windowed = input.windowed(windowSize)
         for ((index, window) in windowed.withIndex()) {
             if (window.toSet().count() == window.count()) {
                 return index + windowSize
