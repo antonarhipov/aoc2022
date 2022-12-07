@@ -1,7 +1,8 @@
 fun main() {
     fun CharSequence.allUnique() = toSet().count() == length
 
-    fun solve(input: String, windowSize: Int) = input.windowed(windowSize) { it.allUnique() }.indexOf(true) + windowSize
+    fun solve(input: String, windowSize: Int) =
+        input.windowed(windowSize).indexOfFirst  { it.allUnique() } + windowSize
 
     fun solveNaively(input: String, windowSize: Int): Int {
         val windowed = input.windowed(windowSize)
